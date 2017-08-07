@@ -5,7 +5,8 @@ compile: g++ complextest.cpp
 Memory leaked: 0 bytes
 -----------------------------------------------------------------*/
 #include "complex.h"
-#include "vld.h"
+#include "vld.h" //Included to run Visual Leak Detector
+
 /*----------------------------------------------------------------
 main
 -----------------------------------------------------------------*/
