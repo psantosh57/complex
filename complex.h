@@ -29,9 +29,8 @@ private:
 	char* copyString(const char* src, char* dst);
 	int getNumDigits(int n, bool isImag);
 	void fillName(int real, int imag);
-	char* intToChar(char* arr, int n, int numDigits);
+	char* intToChar(char* arr, int n, int numDigits, bool isImag);
 	int strAppend(char*& name, char* str, int index);
-	void remove(char* str);
 
 };
 

@@ -86,10 +86,10 @@ char* complex::copyString(const char* src, char* dst) {
 int complex::getLength(const char* str) {
 
 	int i = 0;
-	//int count = 0;
+	
 
 	while (str[i] != '\0') {
-		//count++;
+	
 		i++;
 	}
 
@@ -105,7 +105,6 @@ void complex::print() {
 
 int complex::getNumDigits(int n, bool isImag = false) {
 
-	//cout << "Got digit " << n << endl;
 	int count = 0;
 
 
@@ -130,8 +129,6 @@ int complex::getNumDigits(int n, bool isImag = false) {
 
 void complex::fillName(int real, int imag) {
 
-	//cout << "Got real " << real << " and imag " << imag << endl;
-
 	int size = 1;
 	int real_size = 1;
 	int imag_size = 1;
@@ -147,9 +144,7 @@ void complex::fillName(int real, int imag) {
 
 		real_size += getNumDigits(real);
 		imag_size += getNumDigits(imag, true);
-		//cout << "Real size " << real_size << endl;
-		//cout << "Imag size " << imag_size << endl;
-		size += real_size + imag_size; //For +/- sign and 'i'
+		size += real_size + imag_size;
 	}
 
 	_name = new char[size];
@@ -157,8 +152,8 @@ void complex::fillName(int real, int imag) {
 	char * realStr = new char[real_size];
 	char* imagStr = new char[imag_size];
 
-	realStr = intToChar(realStr, real, real_size);
-	imagStr = intToChar(imagStr, imag, imag_size);
+	realStr = intToChar(realStr, real, real_size, false);
+	imagStr = intToChar(imagStr, imag, imag_size, true);
 	
 	int index = 0;
 	
@@ -181,12 +176,13 @@ void complex::fillName(int real, int imag) {
 
 	_name[index] = '\0';
 
+	delete[] realStr;
+	delete[] imagStr;
+
 }
 
-char* complex::intToChar(char* arr, int n, int count) {
+char* complex::intToChar(char* arr, int n, int count, bool isImag = false) {
 	
-	//cout << "Got n " << n << endl;
-
 	int i = (count-1);
 	int m = n;
 	if (n < 0) {
@@ -202,7 +198,7 @@ char* complex::intToChar(char* arr, int n, int count) {
 		i--;
 	}
 
-	if (m < 0) {
+	if (m < 0 && !isImag) {
 		arr[i] = '-';
 	}	
 
@@ -241,9 +237,4 @@ void complex::setxy(int real, int imag) {
 		fillName(real, imag);
 	}
 
-}
-
-void complex::remove(char* str) {
-
-	delete[] str;
 }
