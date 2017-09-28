@@ -16,8 +16,10 @@ int main() {
 	{
 
 		complex c1(2, 3);
-		c1.print();
+		//c1.print();
+		cout << c1;
 
+		/*
 		complex c2(27, -200);
 		c2.print();
 
@@ -51,6 +53,7 @@ int main() {
 		c1 = c2 = c3 = c4;
 
 		c3.print();
+		*/
 		
 	}
 

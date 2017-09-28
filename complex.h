@@ -15,6 +15,13 @@ public:
 	void print();
 	void setxy(int real, int imag);
 
+	friend ostream& operator<<(ostream& o, const complex& a) {
+
+		o << a._name << endl;
+
+		return o;
+	}
+
 
 private:
 
